@@ -1,7 +1,7 @@
 
 const Nav = () => {
   return (
-    <nav className="flex flex-col gap-1 items-center">
+    <nav className="flex justify-center">
       <input
         className="rounded-xl shadow-md p-2 text-center w-[80%]"
         type="text"

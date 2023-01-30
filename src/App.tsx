@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import CountrySection from './CountrySection'
 import Header from './Header'
 import Nav from './Nav'
 
@@ -8,6 +7,7 @@ function App() {
   <div className="font-mono text-sm font-bold">
     <Header />
     <Nav />
+    <CountrySection />
   </div>
  )
 }
