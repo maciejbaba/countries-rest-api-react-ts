@@ -1,6 +1,11 @@
 import { CountryNeeded } from "./CountriesSection";
 
-const Country = (country: CountryNeeded) => {
+type CountryFC = {
+  key: string
+  country: CountryNeeded
+}
+
+const Country: React.FC<CountryFC> = ({country}) => {
   return <div>{country.name}</div>;
 };
 
