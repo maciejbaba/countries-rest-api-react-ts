@@ -1,8 +1,8 @@
 const Header = () => {
   return (
-    <header className="flex justify-between p-5 mb-1 border-b-2">
+    <header className="flex justify-between p-3">
       <div>
-        <p className="p-2">Countries</p>
+        <p className="p-2 text-2xl">Countries</p>
       </div>
       <div>
         <button className="rounded shadow-md p-2">Dark Mode</button>

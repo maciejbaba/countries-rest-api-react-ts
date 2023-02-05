@@ -8,15 +8,15 @@ export type CountryNeeded = {
   name: string;
   nativeName: string;
   capital: string;
-  // population: string;
-  // region: string;
-  // subregion: string;
-  // topLevelDomain: string;
+  population: string;
+  region: string;
+  subregion: string;
+  topLevelDomain: string;
   borderCode: string;
-  // borderCountries: string[];
-  // flagLink: string;
-  // languages: string[];
-  // currencies: string[];
+  borderCountries: string[];
+  flagLink: string;
+  languages: string[];
+  currencies: string[];
 };
 
 type CountryAllProps = {
@@ -43,8 +43,16 @@ const CountriesSection = () => {
           return {
             name: country.name.common,
             nativeName: country.name.nativeName,
+            population: country.population,
+            region: country.region,
+            subregion: country.subregion,
+            topLevelDomain: country.tld,
             capital: country.capital,
             borderCode: country.cca3,
+            borderCountries: country.borders,
+            flagLink: country.flags.svg,
+            languages: country.languages,
+            currencies: country.currencies,
           };
         }
       );
@@ -55,7 +63,7 @@ const CountriesSection = () => {
   }, []);
 
   return (
-    <main className="grid grid-cols-4 gap-1 p-2">
+    <main className="grid grid-cols-4 gap-5 p-5">
       {countries.map((country) => (
         <Country key={country.borderCode} country={country} />
       ))}
