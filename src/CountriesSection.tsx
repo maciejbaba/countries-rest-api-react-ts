@@ -27,8 +27,12 @@ type ErrorObject = {
   message: string;
 };
 
-const CountriesSection = () => {
-  const [countries, setCountries] = useState(Array<CountryNeeded>);
+type Props = {
+  search: string;
+};
+
+const CountriesSection = ({ search }: Props) => {
+  const [countries, setCountries] = useState<CountryNeeded[]>([]);
 
   useEffect(() => {
     const fetchDataAndSetCountries = async (): Promise<void> => {
@@ -64,9 +68,16 @@ const CountriesSection = () => {
 
   return (
     <main className="grid grid-cols-4 gap-5 p-5">
-      {countries.map((country) => (
-        <Country key={country.borderCode} country={country} />
-      ))}
+      <>
+        {countries.map((country) => {
+          if (
+            country.name.toLowerCase().includes(search.toLowerCase()) ||
+            country.region.toLowerCase().includes(search.toLowerCase())
+          ) {
+            return <Country key={country.borderCode} country={country} />;
+          }
+        })}
+      </>
     </main>
   );
 };

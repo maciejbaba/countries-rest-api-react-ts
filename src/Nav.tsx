@@ -1,6 +1,11 @@
-const Nav = () => {
+type Props = {
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Nav = ({setSearch}: Props ) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    
+    const searchValue = event.target.value
+    setSearch(searchValue)
   }
 
   return (
