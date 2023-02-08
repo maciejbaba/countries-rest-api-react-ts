@@ -6,7 +6,7 @@ import Nav from "./Nav";
 function App() {
   const [search, setSearch] = useState<string>("")
   return (
-    <div className="font-mono text-sm font-bold">
+    <div className="font-mono text-sm font-bold scroll-smooth">
       <Header />
       <Nav setSearch={setSearch}/>
       <CountriesSection search={search}/>
