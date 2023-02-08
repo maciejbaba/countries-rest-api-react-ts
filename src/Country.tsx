@@ -1,4 +1,5 @@
 import { CountryNeeded } from "./CountriesSection";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 type CountryFC = {
   key: string;
@@ -8,7 +9,7 @@ type CountryFC = {
 const Country: React.FC<CountryFC> = ({ country }) => {
   return (
     <div className="flex flex-col items-center text-center rounded-md overflow-hidden shadow-xl">
-      <img
+      <LazyLoadImage
         className="h-[20vh] w-full object-cover shadow-lg"
         src={country.flagLink}
         alt="country flag"
