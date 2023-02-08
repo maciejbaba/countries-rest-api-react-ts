@@ -15,7 +15,7 @@ const Country: React.FC<CountryFC> = ({ country }) => {
         src={country.flagLink}
         onError={e => {
           e.currentTarget.onerror = null
-          e.currentTarget.src = "./public/no-image.png"
+          e.currentTarget.src = "/no-image.png"
         }}
       />
       <p className="text-lg">{country.name}</p>
