@@ -11,7 +11,7 @@ const Nav = ({ setSearch }: Props) => {
   return (
     <nav className="flex justify-center">
       <input
-        className="rounded-xl shadow-md p-2 text-center w-[80%]"
+        className="w-[80%] rounded-xl p-2 text-center shadow-md"
         onChange={(event) => handleChange(event)}
         type="text"
         placeholder="maybe search instead of scrolling?"

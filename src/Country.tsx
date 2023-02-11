@@ -17,7 +17,7 @@ const Country = ({ country }: Country) => {
 
   return (
     <div
-      className="flex flex-col items-center text-center rounded-md overflow-hidden shadow-xl cursor-pointer"
+      className="flex cursor-pointer flex-col items-center overflow-hidden rounded-md text-center shadow-xl"
       onClick={handleClick}
     >
       {isShownInfoComponent && (

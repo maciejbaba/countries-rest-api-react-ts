@@ -4,9 +4,17 @@ import Country from "./Country";
 const FETCH_ALL_COUNTRIES_URI: string =
   "https://restcountries.com/v3.1/all" as const;
 
+type NativeName = {
+  [key: string]: { official: string };
+};
+
+type Currencies = {
+  [key: string]: { name: string };
+};
+
 export type CountryNeeded = {
   name: string;
-  nativeName: string;
+  nativeName: NativeName;
   capital: string;
   population: string;
   region: string;
@@ -16,7 +24,7 @@ export type CountryNeeded = {
   borderCountries: string[];
   flagLink: string;
   languages: string[];
-  currencies: string[];
+  currencies: Currencies;
 };
 
 type CountryAllProps = {
