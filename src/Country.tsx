@@ -20,7 +20,9 @@ const Country = ({ country }: Country) => {
       className="flex flex-col items-center text-center rounded-md overflow-hidden shadow-xl cursor-pointer"
       onClick={handleClick}
     >
-      {isShownInfoComponent && <CountryInfo key={country.borderCode} country={country} />}
+      {isShownInfoComponent && (
+        <CountryInfo key={country.borderCode} country={country} />
+      )}
       {!isShownInfoComponent && (
         <>
           <LazyLoadImage
