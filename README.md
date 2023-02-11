@@ -1,1 +1,1 @@
-### second version of countries project, this time created with react, ts, tailwind instead of vanilla JS and css
+### Second version of countries project, this time created with React, Typescript and TailwindCSS instead of vanillaJS and standard CSS
