@@ -30,6 +30,7 @@ const Country = ({ country }: Country) => {
             alt="country flag image"
             src={country.flagLink}
             onError={(e) => {
+              // this code sets as default no-image photo when flag photo doesnt load
               e.currentTarget.onerror = null;
               e.currentTarget.src = "/no-image.png";
             }}
