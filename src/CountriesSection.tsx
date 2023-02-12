@@ -53,18 +53,20 @@ const CountriesSection = ({ search }: Props) => {
       const clearedCountries: CountryNeeded[] = countriesAllProps.map(
         (country: CountryAllProps): CountryNeeded => {
           return {
-            name: country.name.common,
-            nativeName: country.name.nativeName,
-            population: country.population,
-            region: country.region,
-            subregion: country.subregion,
-            topLevelDomain: country.tld,
-            capital: country.capital,
-            borderCode: country.cca3,
-            borderCountries: country.borders,
-            flagLink: country.flags.svg,
-            languages: country.languages,
-            currencies: country.currencies,
+            name: country.name.common ?? "No name",
+            nativeName: country.name.nativeName ?? "No native name",
+            population: country.population ?? "No population",
+            region: country.region ?? "No region",
+            subregion: country.subregion ?? "No Subregion",
+            topLevelDomain: country.tld ?? "No TLD",
+            capital: country.capital ?? "No capital",
+
+            // change this to country code
+            borderCode: country.cca3 ?? "No country code",
+            borderCountries: country.borders ?? "No border countries",
+            flagLink: country.flags.svg, // there is in the project no photo handling logic
+            languages: country.languages ?? "No languages",
+            currencies: country.currencies ?? "No currencies",
           };
         }
       );

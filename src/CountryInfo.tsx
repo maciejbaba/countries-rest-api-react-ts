@@ -3,7 +3,7 @@ import { Country } from "./Country";
 const CountryInfo = ({ country }: Country) => {
   return (
     <div className="fixed left-0 top-0 h-full w-full cursor-default backdrop-blur-xl">
-      <div className="relative top-[5%] left-[5%] h-[90%] overflow-y-auto w-[90%] text-lg">
+      <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-y-auto text-lg">
         <img
           className="mx-auto mb-2 max-h-[40%] max-w-[3/4] rounded-xl object-contain"
           src={country.flagLink}
@@ -22,9 +22,17 @@ const CountryInfo = ({ country }: Country) => {
           <p>Subregion: {country.subregion}</p>
           <p>Capital: {country.capital}</p>
           <p>Top level domain: {country.topLevelDomain}</p>
-          <p>Currencies: {Object.values(country.currencies).map((curr) => curr.name)}</p>
-          <p>Languages: {Object.values(country.languages).join(', ')}</p>
-          <p>Country borders: {country.borderCountries.join(', ')}</p>
+          <p>
+            Currencies:{" "}
+            {Object.values(country.currencies).map((curr) => curr.name)}
+          </p>
+          <p>Languages: {Object.values(country.languages).join(", ")}</p>
+          <p>
+            Country borders:{" "}
+            {Array.isArray(country.borderCountries)
+              ? country.borderCountries.join(", ")
+              : country.borderCountries}
+          </p>
         </div>
       </div>
     </div>
