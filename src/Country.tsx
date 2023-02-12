@@ -17,16 +17,18 @@ const Country = ({ country }: Country) => {
 
   return (
     <div
-      className="flex cursor-pointer flex-col items-center overflow-hidden rounded-md text-center shadow-xl"
-      onClick={handleClick}
+      className="flex cursor-pointer flex-col items-center overflow-hidden text-center shadow-xl"
+      onClick={() => {
+        document.body.classList.toggle("overflow-hidden");
+        handleClick();
+      }}
     >
       {isShownInfoComponent && (
         <CountryInfo key={country.borderCode} country={country} />
       )}
-      {!isShownInfoComponent && (
         <>
           <LazyLoadImage
-            className="h-[20vh] w-full object-cover shadow-lg"
+            className="h-[20vh] shadow-lg rounded-md"
             alt="country flag image"
             src={country.flagLink}
             onError={(e) => {
@@ -40,7 +42,6 @@ const Country = ({ country }: Country) => {
           <p>Region: {country.region}</p>
           <p className="break-all">Capital: {country.capital}</p>
         </>
-      )}
     </div>
   );
 };

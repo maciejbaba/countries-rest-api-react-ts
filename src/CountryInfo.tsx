@@ -2,10 +2,10 @@ import { Country } from "./Country";
 
 const CountryInfo = ({ country }: Country) => {
   return (
-    <div className="absolute left-0 top-0 h-full w-full cursor-default overflow-hidden backdrop-blur-md">
-      <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-scroll rounded-xl bg-slate-500">
+    <div className="fixed left-0 top-0 h-full w-full cursor-default backdrop-blur-xl">
+      <div className="relative top-[5%] left-[5%] h-[90%] overflow-y-auto w-[90%] text-lg">
         <img
-          className="rounded-xl"
+          className="mx-auto mb-2 max-h-[40%] max-w-[3/4] rounded-xl object-contain"
           src={country.flagLink}
           alt="country flag"
           onError={(e) => {
@@ -14,17 +14,17 @@ const CountryInfo = ({ country }: Country) => {
             e.currentTarget.src = "/no-image.png";
           }}
         />
-        <div className="">
-          <p>{country.name}</p>
-          <p>{Object.values(country.nativeName)[0].official}</p>
-          <p>{country.population.toLocaleString()}</p>
-          <p>{country.region}</p>
-          <p>{country.subregion}</p>
-          <p>{country.capital}</p>
-          <p>{country.topLevelDomain}</p>
-          <p>{Object.values(country.currencies).map((curr) => curr.name)}</p>
-          <p>{Object.values(country.languages)}</p>
-          <p>{country.borderCountries}</p>
+        <div className="flex flex-col gap-2 text-center">
+          <p className="text-2xl">{country.name}</p>
+          <p>Native name: {Object.values(country.nativeName)[0].official}</p>
+          <p>Population: {country.population.toLocaleString()}</p>
+          <p>Region: {country.region}</p>
+          <p>Subregion: {country.subregion}</p>
+          <p>Capital: {country.capital}</p>
+          <p>Top level domain: {country.topLevelDomain}</p>
+          <p>Currencies: {Object.values(country.currencies).map((curr) => curr.name)}</p>
+          <p>Languages: {Object.values(country.languages).join(', ')}</p>
+          <p>Country borders: {country.borderCountries.join(', ')}</p>
         </div>
       </div>
     </div>
