@@ -14,7 +14,7 @@ const Nav = ({ setSearch }: Props) => {
         className="w-[80%] rounded-xl p-2 text-center shadow-md"
         onChange={(event) => handleChange(event)}
         type="text"
-        placeholder="maybe search instead of scrolling?"
+        placeholder="maybe search??"
       />
     </nav>
   );

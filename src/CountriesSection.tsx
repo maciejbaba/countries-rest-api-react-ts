@@ -77,7 +77,7 @@ const CountriesSection = ({ search }: Props) => {
   }, []);
 
   return (
-    <main className="grid grid-cols-4 gap-5 p-5">
+    <main className="grid md:grid-cols-4 grid-cols-1 gap-5 p-5">
       <>
         {countries.map((country) => {
           if (
