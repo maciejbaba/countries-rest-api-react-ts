@@ -12,7 +12,7 @@ const Country = ({ country }: Country) => {
   const [isShownInfoComponent, setIsShownInfo] = useState(false);
 
   const handleClick = () => {
-    setIsShownInfo(true);
+    setIsShownInfo(!isShownInfoComponent);
   };
 
   return (

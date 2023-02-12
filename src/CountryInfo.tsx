@@ -3,7 +3,7 @@ import { Country } from "./Country";
 const CountryInfo = ({ country }: Country) => {
   return (
     <div className="absolute left-0 top-0 h-full w-full cursor-default overflow-hidden backdrop-blur-md">
-      <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-hidden rounded-xl bg-slate-500">
+      <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-scroll rounded-xl bg-slate-500">
         <img
           className="rounded-xl"
           src={country.flagLink}
