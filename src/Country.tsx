@@ -4,15 +4,16 @@ import { useState } from "react";
 import CountryInfo from "./CountryInfo";
 
 export type Props = {
+  countries: CountryNeeded[]
   key: string;
   country: CountryNeeded;
 };
 
-const Country = ({ country }: Props) => {
+const Country = ({ country, countries }: Props) => {
   const [countryToShow, setCountryToShow] = useState<CountryNeeded|null>(null);
 
   const handleClick = (country: CountryNeeded) => {
-    if(countryToShow) setCountryToShow(null)
+    if (countryToShow) setCountryToShow(null)
     else setCountryToShow(country);
   };
 
@@ -25,7 +26,7 @@ const Country = ({ country }: Props) => {
       }}
     >
       {countryToShow && (
-        <CountryInfo key={country.borderCode} country={country} />
+        <CountryInfo setCountryToShow={setCountryToShow} countries={countries} key={country.borderCode} country={country} />
       )}
         <>
           <LazyLoadImage

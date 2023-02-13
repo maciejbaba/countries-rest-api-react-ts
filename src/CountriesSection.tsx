@@ -84,7 +84,7 @@ const CountriesSection = ({ search }: Props) => {
             country.name.toLowerCase().includes(search.toLowerCase()) ||
             country.region.toLowerCase().includes(search.toLowerCase())
           ) {
-            return <Country key={country.borderCode} country={country} />;
+            return <Country countries={countries} key={country.borderCode} country={country} />;
           }
         })}
       </>

@@ -1,9 +1,12 @@
 import { CountryNeeded } from "./CountriesSection";
 import { Props } from "./Country";
 
-const CountryInfo = ({ country }: Props) => {
-  const handleBorderCodeClick = (borderCode: typeof country.borderCode) => {
+type CountryInfoProps = Props & {setCountryToShow: React.Dispatch<React.SetStateAction<CountryNeeded | null>>}
 
+const CountryInfo = ({ country, countries, setCountryToShow }: CountryInfoProps) => {
+  const handleBorderCodeClick = (borderCode: typeof country.borderCode) => {
+    const countryToShow: CountryNeeded|null = countries.find(country => country.borderCode === borderCode) || null
+    setCountryToShow(countryToShow)
   }
 
   return (
