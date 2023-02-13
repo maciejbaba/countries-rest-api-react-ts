@@ -1,6 +1,11 @@
-import { Country } from "./Country";
+import { CountryNeeded } from "./CountriesSection";
+import { Props } from "./Country";
 
-const CountryInfo = ({ country }: Country) => {
+const CountryInfo = ({ country }: Props) => {
+  const handleBorderCodeClick = (borderCode: typeof country.borderCode) => {
+
+  }
+
   return (
     <div className="fixed left-0 top-0 h-full w-full cursor-default backdrop-blur-xl">
       <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-y-auto text-lg">
@@ -10,7 +15,7 @@ const CountryInfo = ({ country }: Country) => {
           alt="country flag"
           onError={(e) => {
             // this code sets default no-image photo when flag photo doesnt load
-            e.currentTarget.onerror = null;
+            e.currentTarget.onerror = null; // prevents looping
             e.currentTarget.src = "/no-image.png";
           }}
         />
@@ -30,8 +35,11 @@ const CountryInfo = ({ country }: Country) => {
           <p>
             Country borders:{" "}
             {Array.isArray(country.borderCountries)
-              ? country.borderCountries.join(", ")
-              : country.borderCountries}
+              // if it's array it has to render buttons that on click will show countryInfo component with clicked country info of that country border code
+              ? country.borderCountries.map(borderCode => {
+                return <button key={borderCode} onClick={() => handleBorderCodeClick(borderCode)}>{borderCode}</button>
+              })
+            : country.borderCountries /* it is string "no border countries" so normaly render it */}
           </p>
         </div>
       </div>

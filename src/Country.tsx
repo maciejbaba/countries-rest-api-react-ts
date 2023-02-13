@@ -3,16 +3,17 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useState } from "react";
 import CountryInfo from "./CountryInfo";
 
-export type Country = {
+export type Props = {
   key: string;
   country: CountryNeeded;
 };
 
-const Country = ({ country }: Country) => {
-  const [isShownInfoComponent, setIsShownInfo] = useState(false);
+const Country = ({ country }: Props) => {
+  const [countryToShow, setCountryToShow] = useState<CountryNeeded|null>(null);
 
-  const handleClick = () => {
-    setIsShownInfo(!isShownInfoComponent);
+  const handleClick = (country: CountryNeeded) => {
+    if(countryToShow) setCountryToShow(null)
+    else setCountryToShow(country);
   };
 
   return (
@@ -20,10 +21,10 @@ const Country = ({ country }: Country) => {
       className="flex cursor-pointer flex-col items-center overflow-hidden text-center shadow-xl"
       onClick={() => {
         document.body.classList.toggle("overflow-hidden");
-        handleClick();
+        handleClick(country);
       }}
     >
-      {isShownInfoComponent && (
+      {countryToShow && (
         <CountryInfo key={country.borderCode} country={country} />
       )}
         <>
@@ -33,7 +34,7 @@ const Country = ({ country }: Country) => {
             src={country.flagLink}
             onError={(e) => {
               // this code sets as default no-image photo when flag photo doesnt load
-              e.currentTarget.onerror = null;
+              e.currentTarget.onerror = null; // prevents looping
               e.currentTarget.src = "/no-image.png";
             }}
           />
