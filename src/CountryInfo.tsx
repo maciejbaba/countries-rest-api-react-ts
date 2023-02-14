@@ -1,13 +1,20 @@
 import { CountryNeeded } from "./CountriesSection";
 import { Props } from "./Country";
 
-type CountryInfoProps = Props & {setCountryToShow: React.Dispatch<React.SetStateAction<CountryNeeded | null>>}
+type CountryInfoProps = Props & {
+  setCountryToShow: React.Dispatch<React.SetStateAction<CountryNeeded | null>>;
+};
 
-const CountryInfo = ({ country, countries, setCountryToShow }: CountryInfoProps) => {
+const CountryInfo = ({
+  country,
+  countries,
+  setCountryToShow,
+}: CountryInfoProps) => {
   const handleBorderCodeClick = (borderCode: typeof country.borderCode) => {
-    const countryToShow: CountryNeeded|null = countries.find(country => country.borderCode === borderCode) || null
-    setCountryToShow(countryToShow)
-  }
+    const countryToShow: CountryNeeded | null =
+      countries.find((country) => country.borderCode === borderCode) || null;
+    setCountryToShow(countryToShow);
+  };
 
   return (
     <div className="fixed left-0 top-0 h-full w-full cursor-default backdrop-blur-xl">
@@ -37,12 +44,25 @@ const CountryInfo = ({ country, countries, setCountryToShow }: CountryInfoProps)
           <p>Languages: {Object.values(country.languages).join(", ")}</p>
           <p>
             Country borders:{" "}
-            {Array.isArray(country.borderCountries)
-              // if it's array it has to render buttons that on click will show countryInfo component with clicked country info of that country border code
-              ? country.borderCountries.map(borderCode => {
-                return <button key={borderCode} onClick={() => handleBorderCodeClick(borderCode)}>{borderCode}</button>
-              })
-            : country.borderCountries /* it is string "no border countries" so normaly render it */}
+            {
+              Array.isArray(country.borderCountries)
+                ? // if it's array it has to render buttons that on click will show countryInfo component with clicked country info of that country border code
+                  country.borderCountries
+                    .map((borderCode) => {
+                      return (
+                        <button
+                          className="mx-1 rounded-md bg-slate-200 hover:bg-slate-300 px-2 py-1 shadow-md"
+                          key={borderCode}
+                          onClick={() => {
+                            handleBorderCodeClick(borderCode);
+                          }}
+                        >
+                          {borderCode}
+                        </button>
+                      );
+                    })
+                : country.borderCountries /* it is string "no border countries" so normaly render it */
+            }
           </p>
         </div>
       </div>
