@@ -32,7 +32,7 @@ const Country = ({ country, countries }: Props) => {
           setCountryToShow={setCountryToShow}
           countries={countries}
           key={country.borderCode}
-          country={country}
+          country={countryToShow}
         />
       )}
       <>

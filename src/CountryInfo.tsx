@@ -53,7 +53,8 @@ const CountryInfo = ({
                         <button
                           className="mx-1 rounded-md bg-slate-200 hover:bg-slate-300 px-2 py-1 shadow-md"
                           key={borderCode}
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation()
                             handleBorderCodeClick(borderCode);
                           }}
                         >
