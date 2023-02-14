@@ -79,7 +79,10 @@ const CountriesSection = ({ search }: Props) => {
   return (
     <main className="grid md:grid-cols-4 grid-cols-1 gap-5 p-5">
       <>
-        {countries.map((country) => {
+        {!countries.length && (
+          <div className="text-center">Loading countries list...</div>
+        )}
+        {countries && countries.map((country) => {
           if (
             country.name.toLowerCase().includes(search.toLowerCase()) ||
             country.region.toLowerCase().includes(search.toLowerCase())
