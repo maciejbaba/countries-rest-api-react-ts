@@ -31,10 +31,6 @@ type CountryAllProps = {
   [key: string]: any;
 };
 
-type ErrorObject = {
-  message: string;
-};
-
 type Props = {
   search: string;
 };
@@ -48,7 +44,7 @@ const CountriesSection = ({ search }: Props) => {
         FETCH_ALL_COUNTRIES_URI
       )
         .then((dataRaw) => dataRaw.json())
-        .catch((err: ErrorObject) => console.error(err.message));
+        .catch((err: typeof Error) => console.error(err));
 
       const clearedCountries: CountryNeeded[] = countriesAllProps.map(
         (country: CountryAllProps): CountryNeeded => {
