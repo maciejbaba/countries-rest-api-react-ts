@@ -9,7 +9,9 @@ const Header = () => {
         </p>
       </div>
       <div>
-        <button className="md:p-2 p-1.5 md:text-lg text-xs rounded-md shadow-md">Dark Mode</button>
+        <button className="rounded-md p-1.5 text-xs shadow-md md:p-2 md:text-lg">
+          Dark Mode
+        </button>
       </div>
     </header>
   );

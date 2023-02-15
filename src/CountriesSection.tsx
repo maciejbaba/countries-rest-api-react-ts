@@ -76,12 +76,13 @@ const CountriesSection = ({ search }: Props) => {
     fetchDataAndSetCountries();
   }, []);
 
-  return <>
-  {!countries.length && (
-    <div className="text-center mt-28">Loading countries list...</div>
-  )}
-    <main className="grid grid-cols-1 gap-5 p-5 md:grid-cols-4">
-      <>
+  return (
+    <>
+      {!countries.length && (
+        <div className="mt-28 text-center">Loading countries list...</div>
+      )}
+      <main className="grid grid-cols-1 gap-5 p-5 md:grid-cols-4">
+        <>
           {countries.map((country) => {
             if (
               country.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -96,9 +97,10 @@ const CountriesSection = ({ search }: Props) => {
               );
             }
           })}
-      </>
-    </main>
-  </>
+        </>
+      </main>
+    </>
+  );
 };
 
 export default CountriesSection;
