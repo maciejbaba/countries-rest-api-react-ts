@@ -12,8 +12,8 @@ const CountryInfo = ({
 }: CountryInfoProps) => {
   const handleCountryCodeClick = (countryCode: typeof country.countryCode) => {
     const countryToShow: CountryNeeded | null =
-      countries.find((country) => country.countryCode === countryCode) || null;
-    setCountryToShow(countryToShow);
+      countries.find((country) => country.countryCode === countryCode) || null; // search for a country with that border code in countries and
+    setCountryToShow(countryToShow); // set it as country to show, because we prevented propagation the country is normally set and rendered
   };
 
   return (
@@ -24,7 +24,8 @@ const CountryInfo = ({
           src={country.flagLink}
           alt="country flag"
           onError={(e) => {
-            // this code sets default no-image photo when flag photo doesnt load
+            // This code sets default no-image photo when flag photo doesnt load
+            // I used it here in order to on img fetch error set nicer img than default
             e.currentTarget.onerror = null; // prevents looping
             e.currentTarget.src = "/no-image.png";
           }}
@@ -46,14 +47,15 @@ const CountryInfo = ({
             Country borders:{" "}
             {
               Array.isArray(country.borderCountries)
-                ? // if it's array it has to render buttons that on click will show countryInfo component with clicked country info of that country border code
+                ? // if it's an array render each country inside it
                   country.borderCountries.map((countryCode) => {
                     return (
                       <button
                         className="mx-1 rounded-md bg-slate-200 px-2 py-1 shadow-md hover:bg-slate-300"
                         key={countryCode}
                         onClick={(e) => {
-                          e.stopPropagation();
+                          e.stopPropagation(); // prevents handleClick function from Country component from firing
+                          // (because there is on countryInfo component another on click handler when the stopPropagation isn't used that handler closes countryInfo component (event bubbling))
                           handleCountryCodeClick(countryCode);
                         }}
                       >
@@ -61,7 +63,7 @@ const CountryInfo = ({
                       </button>
                     );
                   })
-                : country.borderCountries /* it is string "no border countries" so normaly render it */
+                : country.borderCountries /* if it's not an array it is string "no border countries" so normally render it */
             }
           </p>
         </div>

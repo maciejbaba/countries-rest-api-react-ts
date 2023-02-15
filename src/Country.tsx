@@ -23,7 +23,7 @@ const Country = ({ country, countries }: Props) => {
     <div
       className="flex cursor-pointer flex-col items-center overflow-hidden text-center shadow-xl"
       onClick={() => {
-        document.body.classList.toggle("overflow-hidden");
+        document.body.classList.toggle("overflow-hidden"); // prevents scrolling while country info is displayed
         handleClick(country);
       }}
     >
@@ -41,7 +41,8 @@ const Country = ({ country, countries }: Props) => {
           alt="country flag image"
           src={country.flagLink}
           onError={(e) => {
-            // this code sets as default no-image photo when flag photo doesnt load
+            // This code sets as default no-image photo when flag photo doesnt load
+            // I used it here in order to on img fetch error set nicer img than default
             e.currentTarget.onerror = null; // prevents looping
             e.currentTarget.src = "/no-image.png";
           }}
