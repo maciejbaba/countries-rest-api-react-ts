@@ -10,9 +10,9 @@ const CountryInfo = ({
   countries,
   setCountryToShow,
 }: CountryInfoProps) => {
-  const handleBorderCodeClick = (borderCode: typeof country.borderCode) => {
+  const handleCountryCodeClick = (countryCode: typeof country.countryCode) => {
     const countryToShow: CountryNeeded | null =
-      countries.find((country) => country.borderCode === borderCode) || null;
+      countries.find((country) => country.countryCode === countryCode) || null;
     setCountryToShow(countryToShow);
   };
 
@@ -47,17 +47,17 @@ const CountryInfo = ({
             {
               Array.isArray(country.borderCountries)
                 ? // if it's array it has to render buttons that on click will show countryInfo component with clicked country info of that country border code
-                  country.borderCountries.map((borderCode) => {
+                  country.borderCountries.map((countryCode) => {
                     return (
                       <button
                         className="mx-1 rounded-md bg-slate-200 px-2 py-1 shadow-md hover:bg-slate-300"
-                        key={borderCode}
+                        key={countryCode}
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleBorderCodeClick(borderCode);
+                          handleCountryCodeClick(countryCode);
                         }}
                       >
-                        {borderCode}
+                        {countryCode}
                       </button>
                     );
                   })

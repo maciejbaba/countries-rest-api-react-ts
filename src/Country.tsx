@@ -31,7 +31,7 @@ const Country = ({ country, countries }: Props) => {
         <CountryInfo
           setCountryToShow={setCountryToShow}
           countries={countries}
-          key={country.borderCode}
+          key={country.countryCode}
           country={countryToShow}
         />
       )}

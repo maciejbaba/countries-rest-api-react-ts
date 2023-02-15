@@ -20,7 +20,7 @@ export type CountryNeeded = {
   region: string;
   subregion: string;
   topLevelDomain: string;
-  borderCode: string;
+  countryCode: string;
   borderCountries: string[];
   flagLink: string;
   languages: string[];
@@ -46,7 +46,7 @@ const CountriesSection = ({ search }: Props) => {
         .then((dataRaw) => dataRaw.json())
         .catch((err: typeof Error) => console.error(err));
 
-      const clearedCountries: CountryNeeded[] = countriesAllProps.map(
+      const neededCountries: CountryNeeded[] = countriesAllProps.map(
         (country: CountryAllProps): CountryNeeded => {
           return {
             name: country.name.common ?? "No name",
@@ -56,17 +56,15 @@ const CountriesSection = ({ search }: Props) => {
             subregion: country.subregion ?? "No Subregion",
             topLevelDomain: country.tld ?? "No TLD",
             capital: country.capital ?? "No capital",
-
-            // change this to country code
-            borderCode: country.cca3 ?? "No country code",
+            countryCode: country.cca3 ?? "No country code",
             borderCountries: country.borders ?? "No border countries",
-            flagLink: country.flags.svg, // there is in the project no photo handling logic
+            flagLink: country.flags.svg, // there is in the project no photo handling logic (inside country and country info components)
             languages: country.languages ?? "No languages",
             currencies: country.currencies ?? "No currencies",
           };
         }
       );
-      setCountries(clearedCountries);
+      setCountries(neededCountries);
     };
 
     fetchDataAndSetCountries();
@@ -87,7 +85,7 @@ const CountriesSection = ({ search }: Props) => {
               return (
                 <Country
                   countries={countries}
-                  key={country.borderCode}
+                  key={country.countryCode}
                   country={country}
                 />
               );
