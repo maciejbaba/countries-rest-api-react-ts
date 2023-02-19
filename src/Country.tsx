@@ -21,7 +21,7 @@ const Country = ({ country, countries }: Props) => {
 
   return (
     <div
-      className="flex cursor-pointer flex-col items-center overflow-hidden text-center shadow-xl"
+      className="flex cursor-pointer flex-col items-center overflow-hidden rounded text-center shadow-xl"
       onClick={() => {
         document.body.classList.toggle("overflow-hidden"); // prevents scrolling while country info is displayed
         handleClick(country);

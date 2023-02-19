@@ -1,13 +1,18 @@
+import { useEffect } from "react";
 import { BiWorld } from "react-icons/bi";
 
 const toggleCSSClasses = (el: HTMLElement, ...classes: string[]): void => {
-  classes.map(cls => el.classList.toggle(cls))
-}
+  classes.map((cls) => el.classList.toggle(cls));
+};
 
 const Header = () => {
+  useEffect(() => {
+    // dark mode enabled by default
+    toggleCSSClasses(document.body, "bg-slate-800", "text-white");
+  }, []);
 
   const handleDarkMode = () => {
-    toggleCSSClasses(document.body, "bg-slate-900", "text-white")
+    toggleCSSClasses(document.body, "bg-slate-800", "text-white");
   };
 
   return (
@@ -19,7 +24,7 @@ const Header = () => {
       </div>
       <div>
         <button
-          className="rounded-md p-1.5 text-xs shadow-md md:p-2 md:text-lg"
+          className="rounded-md p-1.5 text-xs shadow-xl md:p-2 md:text-lg"
           onClick={handleDarkMode}
         >
           Dark Mode
