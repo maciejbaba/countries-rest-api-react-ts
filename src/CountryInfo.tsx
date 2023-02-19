@@ -18,7 +18,7 @@ const CountryInfo = ({
 
   return (
     <div className="fixed left-0 top-0 h-full w-full cursor-default text-white backdrop-blur-xl backdrop-brightness-50">
-      <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-y-auto text-lg">
+      <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-y-auto text-xs md:text-lg">
         <img
           className="mx-auto mb-2 max-h-[40%] max-w-[3/4] rounded-xl object-contain"
           src={country.flagLink}
