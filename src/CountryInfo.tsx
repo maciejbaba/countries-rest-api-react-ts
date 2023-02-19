@@ -17,7 +17,7 @@ const CountryInfo = ({
   };
 
   return (
-    <div className="fixed left-0 top-0 h-full w-full cursor-default backdrop-blur-xl backdrop-brightness-75">
+    <div className="fixed left-0 top-0 h-full w-full cursor-default text-white backdrop-blur-xl backdrop-brightness-50">
       <div className="relative top-[5%] left-[5%] h-[90%] w-[90%] overflow-y-auto text-lg">
         <img
           className="mx-auto mb-2 max-h-[40%] max-w-[3/4] rounded-xl object-contain"
@@ -43,15 +43,15 @@ const CountryInfo = ({
             {Object.values(country.currencies).map((curr) => curr.name)}
           </p>
           <p>Languages: {Object.values(country.languages).join(", ")}</p>
-          <p>
-            Country borders:{" "}
+          <div>
+            <p>Country borders: </p>
             {
               Array.isArray(country.borderCountries)
                 ? // if it's an array render each country inside it
                   country.borderCountries.map((countryCode) => {
                     return (
                       <button
-                        className="mx-1 rounded-md bg-slate-200 px-2 py-1 shadow-md hover:bg-slate-300"
+                        className="m-1 rounded-md bg-slate-200 px-2 py-1 text-black shadow-md hover:bg-slate-300"
                         key={countryCode}
                         onClick={(e) => {
                           e.stopPropagation(); // prevents handleClick function from Country component from firing
@@ -65,7 +65,7 @@ const CountryInfo = ({
                   })
                 : country.borderCountries /* if it's not an array it is string "no border countries" so normally render it */
             }
-          </p>
+          </div>
         </div>
       </div>
     </div>
