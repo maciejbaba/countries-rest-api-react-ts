@@ -2,6 +2,7 @@
 
 Demo -> https://countries-rest-api-react-ts.vercel.app/
 
+This project is built with TS, React and TailwindCSS.
 
 ## Stack
 
