@@ -17,7 +17,7 @@ So overall I think the project was easier to build and modern tools help (wow wh
 <ul>
 <li>TypeScript</li>
 <li>React</li>
-<li>JSX/TSX</li>
+<li>JSX</li>
 <li>Tailwind</li>
 <li>HTML</li>
 <li>REST API</li>
